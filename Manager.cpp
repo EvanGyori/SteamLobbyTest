@@ -3,7 +3,12 @@
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+
+#ifdef _WIN32
 #include <Windows.h>
+#elif __linux__
+
+#endif
 
 void DisableConsoleInput() {
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
@@ -56,7 +61,12 @@ void Manager::run()
     while (true) {
 	SteamAPI_RunCallbacks();
 
-	if (lobby.isInLobby() && (GetAsyncKeyState(VK_SPACE) & 0x8000)) {
+#ifdef _WIN32
+	bool keyPressed = GetAsyncKeyState(VK_SPACE) & 0x8000;
+#elif __linux__
+	bool keyPressed = false;
+#endif
+	if (lobby.isInLobby() && keyPressed) {
 	    std::cout << ":";
 	    std::string message;
 

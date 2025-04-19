@@ -6132,7 +6132,7 @@ CreateItemResult_t	./steam/isteamugc.h	/^struct CreateItemResult_t$/;"	s
 DeleteItemResult_t	./steam/isteamugc.h	/^struct DeleteItemResult_t$/;"	s
 DepotId_t	./steam/steamtypes.h	/^typedef uint32 DepotId_t;$/;"	t	typeref:typename:uint32
 DigitalAction_t	./steam/isteaminput.h	/^	struct DigitalAction_t {$/;"	s	struct:SteamInputActionEvent_t
-DisableConsoleInput	Manager.cpp	/^void DisableConsoleInput() {$/;"	f	typeref:typename:void
+DisableConsoleInput	./Manager.cpp	/^void DisableConsoleInput() {$/;"	f	typeref:typename:void
 DlcInstalled_t	./steam/isteamapps.h	/^struct DlcInstalled_t$/;"	s
 DownloadClanActivityCountsResult_t	./steam/isteamfriends.h	/^struct DownloadClanActivityCountsResult_t$/;"	s
 DownloadItemResult_t	./steam/isteamugc.h	/^struct DownloadItemResult_t$/;"	s
@@ -6260,7 +6260,7 @@ EWorkshopVideoProvider	./steam/isteamremotestorage.h	/^enum EWorkshopVideoProvid
 EWorkshopVote	./steam/isteamremotestorage.h	/^enum EWorkshopVote$/;"	g
 EXboxOrigin	./steam/isteamcontroller.h	/^enum EXboxOrigin$/;"	g
 EXboxOrigin	./steam/isteaminput.h	/^enum EXboxOrigin$/;"	g
-EnableConsoleInput	Manager.cpp	/^void EnableConsoleInput() {$/;"	f	typeref:typename:void
+EnableConsoleInput	./Manager.cpp	/^void EnableConsoleInput() {$/;"	f	typeref:typename:void
 EncryptedAppTicketResponse_t	./steam/isteamuser.h	/^struct EncryptedAppTicketResponse_t$/;"	s
 EndGameResultCallback_t	./steam/isteammatchmaking.h	/^struct EndGameResultCallback_t$/;"	s
 EquippedProfileItemsChanged_t	./steam/isteamfriends.h	/^struct EquippedProfileItemsChanged_t$/;"	s
@@ -6483,8 +6483,8 @@ LeaderboardScoreUploaded_t	./steam/isteamuserstats.h	/^struct LeaderboardScoreUp
 LeaderboardScoresDownloaded_t	./steam/isteamuserstats.h	/^struct LeaderboardScoresDownloaded_t$/;"	s
 LeaderboardUGCSet_t	./steam/isteamuserstats.h	/^struct LeaderboardUGCSet_t$/;"	s
 LicensesUpdated_t	./steam/isteamuser.h	/^struct LicensesUpdated_t$/;"	s
-Lobby	Lobby.cpp	/^Lobby::Lobby() :$/;"	f	class:Lobby
-Lobby	Lobby.h	/^class Lobby$/;"	c
+Lobby	./Lobby.cpp	/^Lobby::Lobby() :$/;"	f	class:Lobby
+Lobby	./Lobby.h	/^class Lobby$/;"	c
 LobbyChatMsg_t	./steam/isteammatchmaking.h	/^struct LobbyChatMsg_t$/;"	s
 LobbyChatUpdate_t	./steam/isteammatchmaking.h	/^struct LobbyChatUpdate_t$/;"	s
 LobbyCreated_t	./steam/isteammatchmaking.h	/^struct LobbyCreated_t$/;"	s
@@ -6497,7 +6497,7 @@ LobbyMatchList_t	./steam/isteammatchmaking.h	/^struct LobbyMatchList_t$/;"	s
 LowBatteryPower_t	./steam/isteamutils.h	/^struct LowBatteryPower_t$/;"	s
 MASTERSERVERUPDATERPORT_USEGAMESOCKETSHARE	./steam/steam_gameserver.h	/^const uint16 MASTERSERVERUPDATERPORT_USEGAMESOCKETSHARE = STEAMGAMESERVER_QUERY_PORT_SHARED;$/;"	v	typeref:typename:const uint16
 MATCHMAKINGTYPES_H	./steam/matchmakingtypes.h	/^#define MATCHMAKINGTYPES_H$/;"	d
-Manager	Manager.h	/^class Manager$/;"	c
+Manager	./Manager.h	/^class Manager$/;"	c
 MarketEligibilityResponse_t	./steam/isteamuser.h	/^struct MarketEligibilityResponse_t$/;"	s
 MatchMakingKeyValuePair_t	./steam/matchmakingtypes.h	/^	MatchMakingKeyValuePair_t( const char *pchKey, const char *pchValue )$/;"	f	struct:MatchMakingKeyValuePair_t
 MatchMakingKeyValuePair_t	./steam/matchmakingtypes.h	/^	MatchMakingKeyValuePair_t() { m_szKey[0] = m_szValue[0] = 0; }$/;"	f	struct:MatchMakingKeyValuePair_t
@@ -6846,7 +6846,7 @@ SteamItemDetails_t	./steam/isteaminventory.h	/^struct SteamItemDetails_t$/;"	s
 SteamItemInstanceID_t	./steam/isteaminventory.h	/^typedef uint64 SteamItemInstanceID_t;$/;"	t	typeref:typename:uint64
 SteamLeaderboardEntries_t	./steam/isteamuserstats.h	/^typedef uint64 SteamLeaderboardEntries_t;$/;"	t	typeref:typename:uint64
 SteamLeaderboard_t	./steam/isteamuserstats.h	/^typedef uint64 SteamLeaderboard_t;$/;"	t	typeref:typename:uint64
-SteamLobbyTest	CMakeLists.txt	/^project(SteamLobbyTest LANGUAGES CXX)$/;"	p
+SteamLobbyTest	./CMakeLists.txt	/^project(SteamLobbyTest LANGUAGES CXX)$/;"	p
 SteamNetAuthenticationStatus_t	./steam/isteamnetworkingsockets.h	/^struct SteamNetAuthenticationStatus_t$/;"	s
 SteamNetConnectionInfo_t	./steam/steamnetworkingtypes.h	/^struct SteamNetConnectionInfo_t$/;"	s
 SteamNetConnectionRealTimeLaneStatus_t	./steam/steamnetworkingtypes.h	/^struct SteamNetConnectionRealTimeLaneStatus_t$/;"	s
@@ -7882,7 +7882,7 @@ constval	./steam/steam_api.json	/^    { "constname":"k_unSteamUserDefaultInstanc
 constval	./steam/steam_api.json	/^    { "constname":"k_usFriendGameInfoQueryPort_Error", "consttype":"uint16", "constval":"0xFFFE"/;"	s	object:consts.16
 constval	./steam/steam_api.json	/^    { "constname":"k_usFriendGameInfoQueryPort_NotInitialized", "consttype":"uint16", "constval"/;"	s	object:consts.15
 controllerHandle	./steam/isteaminput.h	/^	InputHandle_t controllerHandle;$/;"	m	struct:SteamInputActionEvent_t	typeref:typename:InputHandle_t
-createLobby	Lobby.cpp	/^void Lobby::createLobby(const char* mapName)$/;"	f	class:Lobby	typeref:typename:void
+createLobby	./Lobby.cpp	/^void Lobby::createLobby(const char* mapName)$/;"	f	class:Lobby	typeref:typename:void
 dc_alias	./steam/isteamhtmlsurface.h	/^		dc_alias,$/;"	e	enum:ISteamHTMLSurface::EMouseCursor
 dc_arrow	./steam/isteamhtmlsurface.h	/^		dc_arrow,$/;"	e	enum:ISteamHTMLSurface::EMouseCursor
 dc_blank	./steam/isteamhtmlsurface.h	/^		dc_blank, \/\/ don't show any custom cursor, just use your default$/;"	e	enum:ISteamHTMLSurface::EMouseCursor
@@ -9855,7 +9855,7 @@ func_t	./steam/steam_api_common.h	/^	typedef void (T::*func_t)( P*, bool );$/;"	
 func_t	./steam/steam_api_common.h	/^	typedef void (T::*func_t)(P*);$/;"	t	class:CCallback	typeref:typename:void (T::*)(P *)
 gameserveritem_t	./steam/matchmakingtypes.h	/^class gameserveritem_t$/;"	c
 gameserveritem_t	./steam/matchmakingtypes.h	/^inline gameserveritem_t::gameserveritem_t()$/;"	f	class:gameserveritem_t
-init	Manager.cpp	/^bool Manager::init()$/;"	f	class:Manager	typeref:typename:bool
+init	./Manager.cpp	/^bool Manager::init()$/;"	f	class:Manager	typeref:typename:bool
 int16	./steam/steamtypes.h	/^typedef __int16 int16;$/;"	t	typeref:typename:__int16
 int16	./steam/steamtypes.h	/^typedef short int16;$/;"	t	typeref:typename:short
 int32	./steam/steamtypes.h	/^typedef __int32 int32;$/;"	t	typeref:typename:__int32
@@ -9868,10 +9868,10 @@ intp	./steam/steamtypes.h	/^typedef __int32 intp;$/;"	t	typeref:typename:__int32
 intp	./steam/steamtypes.h	/^typedef __int64 intp;				\/\/ intp is an integer that can accomodate a pointer$/;"	t	typeref:typename:__int64
 intp	./steam/steamtypes.h	/^typedef int intp;$/;"	t	typeref:typename:int
 intp	./steam/steamtypes.h	/^typedef long long intp;$/;"	t	typeref:typename:long long
-isHost	Lobby.cpp	/^bool Lobby::isHost()$/;"	f	class:Lobby	typeref:typename:bool
-isHostFlag	Lobby.h	/^    bool isHostFlag;$/;"	m	class:Lobby	typeref:typename:bool
-isInLobby	Lobby.cpp	/^bool Lobby::isInLobby()$/;"	f	class:Lobby	typeref:typename:bool
-joinLobby	Lobby.cpp	/^void Lobby::joinLobby(CSteamID lobbyId)$/;"	f	class:Lobby	typeref:typename:void
+isHost	./Lobby.cpp	/^bool Lobby::isHost()$/;"	f	class:Lobby	typeref:typename:bool
+isHostFlag	./Lobby.h	/^    bool isHostFlag;$/;"	m	class:Lobby	typeref:typename:bool
+isInLobby	./Lobby.cpp	/^bool Lobby::isInLobby()$/;"	f	class:Lobby	typeref:typename:bool
+joinLobby	./Lobby.cpp	/^void Lobby::joinLobby(CSteamID lobbyId)$/;"	f	class:Lobby	typeref:typename:void
 kNumUGCResultsPerPage	./steam/isteamugc.h	/^const uint32 kNumUGCResultsPerPage = 50;$/;"	v	typeref:typename:const uint32
 k_EAccountTypeAnonGameServer	./steam/steamclientpublic.h	/^	k_EAccountTypeAnonGameServer = 4,	\/\/ anonymous game server account$/;"	e	enum:EAccountType
 k_EAccountTypeAnonUser	./steam/steamclientpublic.h	/^	k_EAccountTypeAnonUser = 10,$/;"	e	enum:EAccountType
@@ -12064,14 +12064,15 @@ kind	./steam/steam_api.json	/^          "kind": "user",$/;"	s	object:interfaces.
 kind	./steam/steam_api.json	/^          "kind": "user",$/;"	s	object:interfaces.30.accessors.0
 kind	./steam/steam_api.json	/^          "kind": "user",$/;"	s	object:interfaces.4.accessors.0
 kind	./steam/steam_api.json	/^          "kind": "user",$/;"	s	object:interfaces.9.accessors.0
-leaveLobby	Lobby.cpp	/^void Lobby::leaveLobby()$/;"	f	class:Lobby	typeref:typename:void
+leaveLobby	./Lobby.cpp	/^void Lobby::leaveLobby()$/;"	f	class:Lobby	typeref:typename:void
 lint64	./steam/steamtypes.h	/^typedef int64 lint64;$/;"	t	typeref:typename:int64
 lint64	./steam/steamtypes.h	/^typedef long int lint64;$/;"	t	typeref:typename:long int
-lobby	Manager.h	/^    Lobby lobby;$/;"	m	class:Manager	typeref:typename:Lobby
-lobbyCreatedCallResult	Lobby.h	/^    CCallResult<Lobby, LobbyCreated_t> lobbyCreatedCallResult;$/;"	m	class:Lobby	typeref:typename:CCallResult<Lobby,LobbyCreated_t>
-lobbyEnterCallResult	Lobby.h	/^    CCallResult<Lobby, LobbyEnter_t> lobbyEnterCallResult;$/;"	m	class:Lobby	typeref:typename:CCallResult<Lobby,LobbyEnter_t>
-lobbyId	Lobby.h	/^    CSteamID lobbyId;$/;"	m	class:Lobby	typeref:typename:CSteamID
-lobbyMatchListCallResult	Manager.h	/^    CCallResult<Manager, LobbyMatchList_t> lobbyMatchListCallResult;$/;"	m	class:Manager	typeref:typename:CCallResult<Manager,LobbyMatchList_t>
+lobby	./Manager.h	/^    Lobby lobby;$/;"	m	class:Manager	typeref:typename:Lobby
+lobbyCreatedCallResult	./Lobby.h	/^    CCallResult<Lobby, LobbyCreated_t> lobbyCreatedCallResult;$/;"	m	class:Lobby	typeref:typename:CCallResult<Lobby,LobbyCreated_t>
+lobbyEnterCallResult	./Lobby.h	/^    CCallResult<Lobby, LobbyEnter_t> lobbyEnterCallResult;$/;"	m	class:Lobby	typeref:typename:CCallResult<Lobby,LobbyEnter_t>
+lobbyId	./Lobby.h	/^    CSteamID lobbyId;$/;"	m	class:Lobby	typeref:typename:CSteamID
+lobbyMatchListCallResult	./Manager.h	/^    CCallResult<Manager, LobbyMatchList_t> lobbyMatchListCallResult;$/;"	m	class:Manager	typeref:typename:CCallResult<Manager,LobbyMatchList_t>
+lobbyTest	./CMakeLists.txt	/^add_executable(lobbyTest main.cpp Lobby.cpp Manager.cpp)$/;"	t
 m_0000	./steam/steamnetworkingtypes.h	/^		uint16 m_0000;$/;"	m	struct:SteamNetworkingIPAddr::IPv4MappedAddress	typeref:typename:uint16
 m_8zeros	./steam/steamnetworkingtypes.h	/^		uint64 m_8zeros;$/;"	m	struct:SteamNetworkingIPAddr::IPv4MappedAddress	typeref:typename:uint64
 m_EAccountType	./steam/steamclientpublic.h	/^			unsigned int		m_EAccountType : 4;			\/\/ type of account - can't show as EAccountType, due to/;"	m	struct:CSteamID::SteamID_t::SteamIDComponent_t	typeref:typename:unsigned int:4
@@ -12770,9 +12771,9 @@ m_usecQueueTime	./steam/steamnetworkingtypes.h	/^	SteamNetworkingMicroseconds m_
 m_usecQueueTime	./steam/steamnetworkingtypes.h	/^	SteamNetworkingMicroseconds m_usecQueueTime;$/;"	m	struct:SteamNetConnectionRealTimeStatus_t	typeref:typename:SteamNetworkingMicroseconds
 m_usecTimeReceived	./steam/steamnetworkingtypes.h	/^	SteamNetworkingMicroseconds m_usecTimeReceived;$/;"	m	struct:SteamNetworkingMessage_t	typeref:typename:SteamNetworkingMicroseconds
 m_val	./steam/steamnetworkingtypes.h	/^	} m_val;$/;"	m	struct:SteamNetworkingConfigValue_t	typeref:union:SteamNetworkingConfigValue_t::__anon8ecbe2d8050a
-main	main.cpp	/^int main()$/;"	f	typeref:typename:int
-mapName	Lobby.h	/^    std::string mapName;$/;"	m	class:Lobby	typeref:typename:std::string
-mapName	Manager.h	/^    std::string mapName;$/;"	m	class:Manager	typeref:typename:std::string
+main	./main.cpp	/^int main()$/;"	f	typeref:typename:int
+mapName	./Lobby.h	/^    std::string mapName;$/;"	m	class:Lobby	typeref:typename:std::string
+mapName	./Manager.h	/^    std::string mapName;$/;"	m	class:Manager	typeref:typename:std::string
 methodname	./steam/steam_api.json	/^          "methodname": "AcceptConnection",$/;"	s	object:interfaces.30.methods.4
 methodname	./steam/steam_api.json	/^          "methodname": "AcceptGame",$/;"	s	object:interfaces.10.methods.3
 methodname	./steam/steam_api.json	/^          "methodname": "AcceptP2PSessionWithUser",$/;"	s	object:interfaces.15.methods.3
@@ -16729,11 +16730,11 @@ name_flat	./steam/steam_api.json	/^          "name_flat": "SteamAPI_SteamUser_v0
 name_flat	./steam/steam_api.json	/^          "name_flat": "SteamAPI_SteamUtils_v010"$/;"	s	object:interfaces.3.accessors.0
 name_flat	./steam/steam_api.json	/^          "name_flat": "SteamAPI_SteamVideo_v007"$/;"	s	object:interfaces.26.accessors.0
 offParam	./steam/isteamdualsense.h	/^	ScePadTriggerEffectOffParam							offParam;$/;"	m	union:ScePadTriggerEffectCommandData	typeref:typename:ScePadTriggerEffectOffParam
-onLobbyChatMsg	Manager.cpp	/^void Manager::onLobbyChatMsg(LobbyChatMsg_t* callback)$/;"	f	class:Manager	typeref:typename:void
-onLobbyChatUpdate	Manager.cpp	/^void Manager::onLobbyChatUpdate(LobbyChatUpdate_t* callback)$/;"	f	class:Manager	typeref:typename:void
-onLobbyCreated	Lobby.cpp	/^void Lobby::onLobbyCreated(LobbyCreated_t* callback, bool bIOFailure)$/;"	f	class:Lobby	typeref:typename:void
-onLobbyEnter	Lobby.cpp	/^void Lobby::onLobbyEnter(LobbyEnter_t* callback, bool bIOFailure)$/;"	f	class:Lobby	typeref:typename:void
-onLobbyMatchList	Manager.cpp	/^void Manager::onLobbyMatchList(LobbyMatchList_t* callback, bool bIOFailure)$/;"	f	class:Manager	typeref:typename:void
+onLobbyChatMsg	./Manager.cpp	/^void Manager::onLobbyChatMsg(LobbyChatMsg_t* callback)$/;"	f	class:Manager	typeref:typename:void
+onLobbyChatUpdate	./Manager.cpp	/^void Manager::onLobbyChatUpdate(LobbyChatUpdate_t* callback)$/;"	f	class:Manager	typeref:typename:void
+onLobbyCreated	./Lobby.cpp	/^void Lobby::onLobbyCreated(LobbyCreated_t* callback, bool bIOFailure)$/;"	f	class:Lobby	typeref:typename:void
+onLobbyEnter	./Lobby.cpp	/^void Lobby::onLobbyEnter(LobbyEnter_t* callback, bool bIOFailure)$/;"	f	class:Lobby	typeref:typename:void
+onLobbyMatchList	./Manager.cpp	/^void Manager::onLobbyMatchList(LobbyMatchList_t* callback, bool bIOFailure)$/;"	f	class:Manager	typeref:typename:void
 operator !=	./steam/steamclientpublic.h	/^	bool operator != ( const CGameID &rhs ) const$/;"	f	class:CGameID	typeref:typename:bool
 operator !=	./steam/steamclientpublic.h	/^	inline bool operator!=( const CSteamID &val ) const { return !operator==( val ); }$/;"	f	class:CSteamID	typeref:typename:bool
 operator <	./steam/matchmakingtypes.h	/^inline bool servernetadr_t::operator<(const servernetadr_t &netadr) const$/;"	f	class:servernetadr_t	typeref:typename:bool
@@ -22617,8 +22618,8 @@ rotVelY	./steam/isteamcontroller.h	/^	float rotVelY;$/;"	m	struct:ControllerMoti
 rotVelY	./steam/isteaminput.h	/^	float rotVelY;$/;"	m	struct:InputMotionData_t	typeref:typename:float
 rotVelZ	./steam/isteamcontroller.h	/^	float rotVelZ;$/;"	m	struct:ControllerMotionData_t	typeref:typename:float
 rotVelZ	./steam/isteaminput.h	/^	float rotVelZ;$/;"	m	struct:InputMotionData_t	typeref:typename:float
-run	Manager.cpp	/^void Manager::run()$/;"	f	class:Manager	typeref:typename:void
-sendMessage	Lobby.cpp	/^void Lobby::sendMessage(const char* message)$/;"	f	class:Lobby	typeref:typename:void
+run	./Manager.cpp	/^void Manager::run()$/;"	f	class:Manager	typeref:typename:void
+sendMessage	./Lobby.cpp	/^void Lobby::sendMessage(const char* message)$/;"	f	class:Lobby	typeref:typename:void
 servernetadr_t	./steam/matchmakingtypes.h	/^	servernetadr_t() : m_usConnectionPort( 0 ), m_usQueryPort( 0 ), m_unIP( 0 ) {}$/;"	f	class:servernetadr_t
 servernetadr_t	./steam/matchmakingtypes.h	/^class servernetadr_t $/;"	c
 slopeFeedbackParam	./steam/isteamdualsense.h	/^	ScePadTriggerEffectSlopeFeedbackParam				slopeFeedbackParam;$/;"	m	union:ScePadTriggerEffectCommandData	typeref:typename:ScePadTriggerEffectSlopeFeedbackParam
@@ -25011,5 +25012,5 @@ y	./steam/isteaminput.h	/^	float x, y;$/;"	m	struct:InputAnalogActionData_t	type
 ~CCallResult	./steam/steam_api_internal.h	/^inline CCallResult<T, P>::~CCallResult()$/;"	f	class:CCallResult
 ~CCallbackImpl	./steam/steam_api_common.h	/^	virtual ~CCallbackImpl() { if ( m_nCallbackFlags & k_ECallbackFlagsRegistered ) SteamAPI_Unregi/;"	f	class:CCallbackImpl
 ~ISteamHTMLSurface	./steam/isteamhtmlsurface.h	/^	virtual ~ISteamHTMLSurface() {}$/;"	f	class:ISteamHTMLSurface
-~Manager	Manager.cpp	/^Manager::~Manager()$/;"	f	class:Manager
+~Manager	./Manager.cpp	/^Manager::~Manager()$/;"	f	class:Manager
 ~SteamNetworkingMessage_t	./steam/steamnetworkingtypes.h	/^	inline ~SteamNetworkingMessage_t() {}$/;"	f	struct:SteamNetworkingMessage_t
