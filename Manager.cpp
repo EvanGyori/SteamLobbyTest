@@ -10,6 +10,7 @@
 
 #endif
 
+#ifdef _WIN32
 void DisableConsoleInput() {
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
     DWORD mode;
@@ -29,6 +30,7 @@ void EnableConsoleInput() {
     mode |= (ENABLE_PROCESSED_INPUT | ENABLE_LINE_INPUT | ENABLE_ECHO_INPUT);
     SetConsoleMode(hStdin, mode);
 }
+#endif
 
 Manager::~Manager()
 {
@@ -49,7 +51,6 @@ void Manager::run()
 {
     std::cout << "Map: ";
     std::cin >> mapName;
-    DisableConsoleInput();
 
     SteamMatchmaking()->AddRequestLobbyListStringFilter("map", mapName.c_str(),
 	    k_ELobbyComparisonEqual);
@@ -70,9 +71,7 @@ void Manager::run()
 	    std::cout << ":";
 	    std::string message;
 
-	    EnableConsoleInput();
 	    std::cin >> message;
-	    DisableConsoleInput();
 
 	    lobby.sendMessage(message.c_str());
 	}
