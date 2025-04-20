@@ -12,6 +12,11 @@
 #include <fcntl.h>
 #endif
 
+const char* getPlayerName(CSteamID steamId)
+{
+    return SteamFriends()->GetFriendPersonaName(steamId);
+}
+
 #ifdef __linux__
 void setNonBlockingMode(bool enable) {
     static struct termios oldt, newt;
@@ -136,7 +141,7 @@ void Manager::onLobbyChatMsg(LobbyChatMsg_t* callback)
 		callback->m_ulSteamIDLobby, callback->m_iChatID,
 		nullptr, &message.front(), message.size() - 1, nullptr);
 
-	std::cout << callback->m_ulSteamIDUser << ": " << &message.front() << std::endl;
+	std::cout << getPlayerName(callback->m_ulSteamIDUser) << ": " << &message.front() << std::endl;
     } else {
 	std::cerr << "STEAM unknown message type\n";
     }
@@ -144,7 +149,7 @@ void Manager::onLobbyChatMsg(LobbyChatMsg_t* callback)
 
 void Manager::onLobbyChatUpdate(LobbyChatUpdate_t* callback)
 {
-    uint64_t name = callback->m_ulSteamIDUserChanged;
+    const char* name = getPlayerName(callback->m_ulSteamIDUserChanged);
     switch (callback->m_rgfChatMemberStateChange) {
 	case k_EChatMemberStateChangeEntered:
 	    std::cout << name << " joined\n";
