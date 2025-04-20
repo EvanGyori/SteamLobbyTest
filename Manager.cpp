@@ -7,11 +7,41 @@
 #ifdef _WIN32
 #include <Windows.h>
 #elif __linux__
-
+#include <termios.h>
+#include <unistd.h>
+#include <fcntl.h>
 #endif
 
-#ifdef _WIN32
+#ifdef __linux__
+void setNonBlockingMode(bool enable) {
+    static struct termios oldt, newt;
+
+    if (enable) {
+        tcgetattr(STDIN_FILENO, &oldt); // save old settings
+        newt = oldt;
+        newt.c_lflag &= ~(ICANON | ECHO); // disable buffering and echo
+        tcsetattr(STDIN_FILENO, TCSANOW, &newt);
+
+        // Set non-blocking mode
+        fcntl(STDIN_FILENO, F_SETFL, O_NONBLOCK);
+    } else {
+        // Restore old settings
+        tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+        fcntl(STDIN_FILENO, F_SETFL, 0); // remove O_NONBLOCK
+    }
+}
+
+bool keyPressed(char &c) {
+    c = getchar();
+    if (c != EOF) {
+        return true;
+    }
+    return false;
+}
+#endif
+
 void DisableConsoleInput() {
+#ifdef _WIN32
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
     DWORD mode;
     GetConsoleMode(hStdin, &mode);
@@ -19,9 +49,13 @@ void DisableConsoleInput() {
     // Disable all input processing flags
     mode &= ~(ENABLE_LINE_INPUT | ENABLE_ECHO_INPUT | ENABLE_INSERT_MODE);
     SetConsoleMode(hStdin, mode);
+#elif __linux__
+    setNonBlockingMode(true);
+#endif
 }
 
 void EnableConsoleInput() {
+#ifdef _WIN32
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
     DWORD mode;
     GetConsoleMode(hStdin, &mode);
@@ -31,8 +65,10 @@ void EnableConsoleInput() {
     SetConsoleMode(hStdin, mode);
 
     FlushConsoleInputBuffer(hStdin);
-}
+#elif __linux__
+    setNonBlockingMode(false);
 #endif
+}
 
 Manager::Manager() :
     wasSpacePressed(false)
@@ -73,7 +109,9 @@ void Manager::run()
 #ifdef _WIN32
 	bool isSpacePressed = GetAsyncKeyState(VK_SPACE) & 0x8000;
 #elif __linux__
-	bool isSpacePressed = false;
+	char key = 0;
+	keyPressed(key);
+	bool isSpacePressed = key == ' ';
 #endif
 	if (lobby.isInLobby() && wasSpacePressed && !isSpacePressed) {
 	    std::cout << ":";
