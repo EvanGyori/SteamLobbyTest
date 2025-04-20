@@ -17,7 +17,7 @@ void DisableConsoleInput() {
     GetConsoleMode(hStdin, &mode);
 
     // Disable all input processing flags
-    mode &= ~(ENABLE_PROCESSED_INPUT | ENABLE_LINE_INPUT | ENABLE_ECHO_INPUT);
+    mode &= ~(ENABLE_LINE_INPUT | ENABLE_ECHO_INPUT | ENABLE_INSERT_MODE);
     SetConsoleMode(hStdin, mode);
 }
 
@@ -27,10 +27,17 @@ void EnableConsoleInput() {
     GetConsoleMode(hStdin, &mode);
 
     // Disable all input processing flags
-    mode |= (ENABLE_PROCESSED_INPUT | ENABLE_LINE_INPUT | ENABLE_ECHO_INPUT);
+    mode |= (ENABLE_LINE_INPUT | ENABLE_ECHO_INPUT | ENABLE_INSERT_MODE);
     SetConsoleMode(hStdin, mode);
+
+    FlushConsoleInputBuffer(hStdin);
 }
 #endif
+
+Manager::Manager() :
+    wasSpacePressed(false)
+{
+}
 
 Manager::~Manager()
 {
@@ -51,6 +58,7 @@ void Manager::run()
 {
     std::cout << "Map: ";
     std::cin >> mapName;
+    DisableConsoleInput();
 
     SteamMatchmaking()->AddRequestLobbyListStringFilter("map", mapName.c_str(),
 	    k_ELobbyComparisonEqual);
@@ -63,18 +71,22 @@ void Manager::run()
 	SteamAPI_RunCallbacks();
 
 #ifdef _WIN32
-	bool keyPressed = GetAsyncKeyState(VK_SPACE) & 0x8000;
+	bool isSpacePressed = GetAsyncKeyState(VK_SPACE) & 0x8000;
 #elif __linux__
-	bool keyPressed = false;
+	bool isSpacePressed = false;
 #endif
-	if (lobby.isInLobby() && keyPressed) {
+	if (lobby.isInLobby() && wasSpacePressed && !isSpacePressed) {
 	    std::cout << ":";
 	    std::string message;
 
+	    EnableConsoleInput();
 	    std::cin >> message;
+	    DisableConsoleInput();
 
 	    lobby.sendMessage(message.c_str());
 	}
+
+	wasSpacePressed = isSpacePressed;
     }
 }
 
@@ -94,7 +106,7 @@ void Manager::onLobbyChatMsg(LobbyChatMsg_t* callback)
 
 void Manager::onLobbyChatUpdate(LobbyChatUpdate_t* callback)
 {
-    uint64_t name = callback->m_ulSteamIDLobby;
+    uint64_t name = callback->m_ulSteamIDUserChanged;
     switch (callback->m_rgfChatMemberStateChange) {
 	case k_EChatMemberStateChangeEntered:
 	    std::cout << name << " joined\n";

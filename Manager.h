@@ -7,6 +7,8 @@
 class Manager
 {
 public:
+    Manager();
+
     ~Manager();
     
     // Returns true if init is successful,
@@ -18,6 +20,7 @@ public:
 private:
     Lobby lobby;
     std::string mapName;
+    bool wasSpacePressed;
 
     STEAM_CALLBACK(Manager, onLobbyChatMsg, LobbyChatMsg_t);
     STEAM_CALLBACK(Manager, onLobbyChatUpdate, LobbyChatUpdate_t);

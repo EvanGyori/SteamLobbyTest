@@ -3,6 +3,10 @@
 int main()
 {
     Manager manager;
-    manager.init();
+    if (!manager.init()) {
+	return 1;
+    }
     manager.run();
+
+    return 0;
 }
