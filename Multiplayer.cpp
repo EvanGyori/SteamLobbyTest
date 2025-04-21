@@ -1,12 +1,9 @@
 #include "Multiplayer.h"
 
-#include <cassert>
 #include <iostream>
 
 void Multiplayer::sendValueToAll(const Lobby& lobby, uint32_t value)
 {
-    assert(lobby.isInLobby(), "Trying to send message when not in a lobby");
-
     CSteamID lobbyId = lobby.getLobbyId();
     int playerCount = SteamMatchmaking()->GetNumLobbyMembers(lobbyId);
 
