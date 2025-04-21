@@ -17,9 +17,11 @@ public:
 
     void sendMessage(const char* message);
 
-    bool isInLobby();
+    bool isInLobby() const;
 
-    bool isHost();
+    bool isHost() const;
+
+    CSteamID getLobbyId() const;
 
 private:
     CSteamID lobbyId;

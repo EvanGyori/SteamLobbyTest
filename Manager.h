@@ -3,6 +3,7 @@
 #include <string>
 
 #include "Lobby.h"
+#include "Multiplayer.h"
 
 class Manager
 {
@@ -19,8 +20,9 @@ public:
 
 private:
     Lobby lobby;
+    Multiplayer multiplayer;
     std::string mapName;
-    bool wasSpacePressed;
+    bool wasSpacePressed, wasWPressed;
 
     STEAM_CALLBACK(Manager, onLobbyChatMsg, LobbyChatMsg_t);
     STEAM_CALLBACK(Manager, onLobbyChatUpdate, LobbyChatUpdate_t);

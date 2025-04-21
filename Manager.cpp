@@ -36,12 +36,8 @@ void setNonBlockingMode(bool enable) {
     }
 }
 
-bool keyPressed(char &c) {
+void keyPressed(char &c) {
     c = getchar();
-    if (c != EOF) {
-        return true;
-    }
-    return false;
 }
 #endif
 
@@ -110,14 +106,22 @@ void Manager::run()
 
     while (true) {
 	SteamAPI_RunCallbacks();
+	multiplayer.receiveMessages();
 
 #ifdef _WIN32
 	bool isSpacePressed = GetAsyncKeyState(VK_SPACE) & 0x8000;
+	bool isWPressed = GetAsyncKeyState('w') & 0x8000;
 #elif __linux__
 	char key = 0;
 	keyPressed(key);
 	bool isSpacePressed = key == ' ';
+	bool isWPressed = key == 'w';
 #endif
+
+	if (lobby.isInLobby() && wasWPressed && !isWPressed) {
+	    multiplayer.sendValueToAll(lobby, 13);
+	}
+
 	if (lobby.isInLobby() && wasSpacePressed && !isSpacePressed) {
 	    std::cout << ":";
 	    std::string message;
@@ -130,6 +134,7 @@ void Manager::run()
 	}
 
 	wasSpacePressed = isSpacePressed;
+	wasWPressed = isWPressed;
     }
 }
 

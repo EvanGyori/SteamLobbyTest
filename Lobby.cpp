@@ -43,15 +43,20 @@ void Lobby::sendMessage(const char* message)
     }
 }
 
-bool Lobby::isInLobby()
+bool Lobby::isInLobby() const
 {
     // Could also try IsValid()
     return lobbyId.ConvertToUint64() != 0;
 }
 
-bool Lobby::isHost()
+bool Lobby::isHost() const
 {
     return isHostFlag;
+}
+
+CSteamID Lobby::getLobbyId() const
+{
+    return lobbyId;
 }
 
 void Lobby::onLobbyEnter(LobbyEnter_t* callback, bool bIOFailure)
