@@ -110,7 +110,7 @@ void Manager::run()
 
 #ifdef _WIN32
 	bool isSpacePressed = GetAsyncKeyState(VK_SPACE) & 0x8000;
-	bool isWPressed = GetAsyncKeyState('w') & 0x8000;
+	bool isWPressed = GetAsyncKeyState('W') & 0x8000;
 #elif __linux__
 	char key = 0;
 	keyPressed(key);

@@ -9,14 +9,16 @@ void Multiplayer::sendValueToAll(const Lobby& lobby, uint32_t value)
 
     for (int i = 0; i < playerCount; i++) {
 	CSteamID playerId = SteamMatchmaking()->GetLobbyMemberByIndex(lobbyId, i);
-	SteamNetworkingIdentity identity = {};
-	identity.SetSteamID(playerId);
-	EResult result =
-	    SteamNetworkingMessages()->SendMessageToUser(identity, &value, sizeof(value),
-		    k_nSteamNetworkingSend_Reliable, 0);
+	if (playerId != SteamUser()->GetSteamID()) {
+	    SteamNetworkingIdentity identity = {};
+	    identity.SetSteamID(playerId);
+	    EResult result =
+		SteamNetworkingMessages()->SendMessageToUser(identity, &value, sizeof(value),
+			k_nSteamNetworkingSend_Reliable, 0);
 
-	if (result != k_EResultOK) {
-	    std::cerr << "STEAM failed to send message\n";
+	    if (result != k_EResultOK) {
+		std::cerr << "STEAM failed to send message: " << result << std::endl;
+	    }
 	}
     }
 }
