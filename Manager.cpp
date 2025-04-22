@@ -41,7 +41,7 @@ void keyPressed(char &c) {
 }
 #endif
 
-void DisableConsoleInput() {
+void disableConsoleInput() {
 #ifdef _WIN32
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
     DWORD mode;
@@ -55,7 +55,7 @@ void DisableConsoleInput() {
 #endif
 }
 
-void EnableConsoleInput() {
+void enableConsoleInput() {
 #ifdef _WIN32
     HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
     DWORD mode;
@@ -79,6 +79,7 @@ Manager::Manager() :
 Manager::~Manager()
 {
     SteamAPI_Shutdown();
+    enableConsoleInput();
 }
 
 bool Manager::init()
@@ -95,7 +96,7 @@ void Manager::run()
 {
     std::cout << "Map: ";
     std::cin >> mapName;
-    DisableConsoleInput();
+    disableConsoleInput();
 
     SteamMatchmaking()->AddRequestLobbyListStringFilter("map", mapName.c_str(),
 	    k_ELobbyComparisonEqual);
@@ -130,9 +131,9 @@ void Manager::run()
 	    std::cout << ":";
 	    std::string message;
 
-	    EnableConsoleInput();
+	    enableConsoleInput();
 	    std::cin >> message;
-	    DisableConsoleInput();
+	    disableConsoleInput();
 
 	    lobby.sendMessage(message.c_str());
 	}

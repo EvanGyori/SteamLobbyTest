@@ -8,13 +8,6 @@ Lobby::Lobby() :
 {
 }
 
-Lobby::~Lobby()
-{
-    if (isInLobby()) {
-	leaveLobby();
-    }
-}
-
 void Lobby::joinLobby(CSteamID lobbyId)
 {
     isHostFlag = false;
