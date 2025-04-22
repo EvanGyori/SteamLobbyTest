@@ -89,6 +89,8 @@ bool Manager::init()
 	return false;
     }
 
+    SteamNetworkingUtils()->InitRelayNetworkAccess();
+
     return true;
 }
 
