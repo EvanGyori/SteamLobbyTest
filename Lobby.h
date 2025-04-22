@@ -9,6 +9,8 @@ class Lobby
 public:
     Lobby();
 
+    ~Lobby();
+
     void joinLobby(CSteamID lobbyId);
 
     void createLobby(const char* mapName);

@@ -104,18 +104,22 @@ void Manager::run()
 
     std::cout << "Fetching lobbies...\n";
 
-    while (true) {
+    bool quit = false;
+
+    while (!quit) {
 	SteamAPI_RunCallbacks();
 	multiplayer.receiveMessages();
 
 #ifdef _WIN32
 	bool isSpacePressed = GetAsyncKeyState(VK_SPACE) & 0x8000;
 	bool isWPressed = GetAsyncKeyState('W') & 0x8000;
+	quit = GetAsyncKeyState('Q') & 0x8000;
 #elif __linux__
 	char key = 0;
 	keyPressed(key);
 	bool isSpacePressed = key == ' ';
 	bool isWPressed = key == 'w';
+	quit = key == 'q';
 #endif
 
 	if (lobby.isInLobby() && wasWPressed && !isWPressed) {
