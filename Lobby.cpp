@@ -10,7 +10,6 @@ Lobby::Lobby() :
 
 void Lobby::joinLobby(CSteamID lobbyId)
 {
-    isHostFlag = false;
     SteamAPICall_t callResult = SteamMatchmaking()->JoinLobby(lobbyId);
     lobbyEnterCallResult.Set(callResult, this, &Lobby::onLobbyEnter);
 
@@ -19,7 +18,6 @@ void Lobby::joinLobby(CSteamID lobbyId)
 
 void Lobby::createLobby(const char* mapName)
 {
-    isHostFlag = true;
     SteamAPICall_t callResult = SteamMatchmaking()->CreateLobby(k_ELobbyTypePublic, 2);
     lobbyCreatedCallResult.Set(callResult, this, &Lobby::onLobbyCreated);
     this->mapName = mapName;
@@ -51,7 +49,7 @@ bool Lobby::isInLobby() const
 
 bool Lobby::isHost() const
 {
-    return isHostFlag;
+    return SteamMatchmaking()->GetLobbyOwner(lobbyId) == SteamUser()->GetSteamID();
 }
 
 CSteamID Lobby::getLobbyId() const

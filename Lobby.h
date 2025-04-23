@@ -25,7 +25,6 @@ public:
 
 private:
     CSteamID lobbyId;
-    bool isHostFlag;
     std::string mapName;
 
     void onLobbyEnter(LobbyEnter_t* callback, bool bIOFailure);
