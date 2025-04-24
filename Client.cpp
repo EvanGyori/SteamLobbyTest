@@ -33,7 +33,6 @@ void Client::receiveMessages()
     SteamNetworkingMessage_t* messages = nullptr;
     int messageCount = SteamNetworkingSockets()->ReceiveMessagesOnConnection(
 	    connectionHandle, &messages, 10);
-    std::cout << messages << std::endl;
 
     for (int i = 0; i < messageCount; ++i) {
 	handleMessage(messages[i]);
