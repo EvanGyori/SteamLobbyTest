@@ -7,14 +7,14 @@ Client::Client(HSteamNetConnection connectionHandle) :
 {
 }
 
-Client::Client(CSteamID hostId, int virtualPort = 0)
+Client::Client(CSteamID hostId, int virtualPort)
 {
     SteamNetworkingIdentity identity = {};
     identity.SetSteamID(hostId);
     connectionHandle = SteamNetworkingSockets()->ConnectP2P(identity, virtualPort, 0, nullptr);
 }
 
-Client~Client()
+Client::~Client()
 {
     SteamNetworkingSockets()->CloseConnection(connectionHandle, 0, nullptr, false);
 }
@@ -23,7 +23,7 @@ void Client::sendMessage(uint32_t value)
 {
     EResult result = SteamNetworkingSockets()->SendMessageToConnection(
 	    connectionHandle, &value, sizeof(value), 0, nullptr);
-    if (result != k_EResultSuccess) {
+    if (result != k_EResultOK) {
 	std::cerr << "STEAM failed to send message in Client.cpp\n";
     }
 }
@@ -56,11 +56,16 @@ std::string Client::getName() const
 {
     SteamNetConnectionInfo_t info = {};
     if (SteamNetworkingSockets()->GetConnectionInfo(connectionHandle, &info)) {
-	CSteamID id = info.m_identityRemote.getSteamID();
+	CSteamID id = info.m_identityRemote.GetSteamID();
 	if (id.IsValid()) {
 	    return SteamFriends()->GetFriendPersonaName(id);
 	}
     }
 
     return "unknownName";
+}
+
+HSteamNetConnection Client::getConnectionHandle()
+{
+    return connectionHandle;
 }

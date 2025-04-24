@@ -7,7 +7,7 @@ else()
     set(steamlib "libsteam_api.so")
 endif()
 
-add_executable(lobbyTest main.cpp Lobby.cpp Manager.cpp Multiplayer.cpp)
+add_executable(lobbyTest main.cpp Lobby.cpp Manager.cpp Multiplayer.cpp Server.cpp Client.cpp)
 target_link_libraries(lobbyTest PUBLIC "${CMAKE_SOURCE_DIR}/${steamlib}")
 
 add_custom_command(TARGET lobbyTest POST_BUILD

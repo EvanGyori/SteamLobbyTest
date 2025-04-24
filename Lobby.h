@@ -19,6 +19,8 @@ public:
 
     bool isInLobby() const;
 
+    CSteamID getHostId() const;
+
     bool isHost() const;
 
     CSteamID getLobbyId() const;

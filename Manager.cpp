@@ -72,12 +72,18 @@ void enableConsoleInput() {
 }
 
 Manager::Manager() :
-    wasSpacePressed(false)
+    wasSpacePressed(false),
+    wasWPressed(false),
+    client(nullptr),
+    server(nullptr)
 {
 }
 
 Manager::~Manager()
 {
+    delete client;
+    delete server;
+
     SteamAPI_Shutdown();
     enableConsoleInput();
 }
@@ -111,33 +117,57 @@ void Manager::run()
 
     while (!quit) {
 	SteamAPI_RunCallbacks();
-	multiplayer.receiveMessages();
+	//multiplayer.receiveMessages();
+	if (server != nullptr) {
+	    server->receiveMessages();
+	} else if (client != nullptr) {
+	    client->receiveMessages();
+	}
 
 #ifdef _WIN32
 	bool isSpacePressed = GetAsyncKeyState(VK_SPACE) & 0x8000;
 	bool isWPressed = GetAsyncKeyState('W') & 0x8000;
 	quit = GetAsyncKeyState('Q') & 0x8000;
+	bool isEPressed = GetAsyncKeyState('E') & 0x8000;
 #elif __linux__
 	char key = 0;
 	keyPressed(key);
 	bool isSpacePressed = key == ' ';
 	bool isWPressed = key == 'w';
 	quit = key == 'q';
+	bool isEPressed = key == 'e';
 #endif
 
-	if (lobby.isInLobby() && wasWPressed && !isWPressed) {
-	    multiplayer.sendValueToAll(lobby, 13);
-	}
+	if (lobby.isInLobby()) {
+	    if (wasWPressed && !isWPressed) {
+		//multiplayer.sendValueToAll(lobby, 13);
+		if (server != nullptr) {
+		    server->sendMessageToAll(1321);
+		} else if (client != nullptr) {
+		    client->sendMessage(99);
+		} else {
+		    std::cout << "Not currently hosting or connected to a server, press E\n";
+		}
+	    }
 
-	if (lobby.isInLobby() && wasSpacePressed && !isSpacePressed) {
-	    std::cout << ":";
-	    std::string message;
+	    if (wasSpacePressed && !isSpacePressed) {
+		std::cout << ":";
+		std::string message;
 
-	    enableConsoleInput();
-	    std::cin >> message;
-	    disableConsoleInput();
+		enableConsoleInput();
+		std::cin >> message;
+		disableConsoleInput();
 
-	    lobby.sendMessage(message.c_str());
+		lobby.sendMessage(message.c_str());
+	    }
+
+	    if (isEPressed && server == nullptr && client == nullptr) {
+		if (lobby.isHost()) {
+		    server = new Server();
+		} else {
+		    client = new Client(lobby.getHostId());
+		}
+	    }
 	}
 
 	wasSpacePressed = isSpacePressed;

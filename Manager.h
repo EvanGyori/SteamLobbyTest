@@ -3,7 +3,9 @@
 #include <string>
 
 #include "Lobby.h"
-#include "Multiplayer.h"
+//#include "Multiplayer.h"
+#include "Server.h"
+#include "Client.h"
 
 class Manager
 {
@@ -20,7 +22,9 @@ public:
 
 private:
     Lobby lobby;
-    Multiplayer multiplayer;
+    //Multiplayer multiplayer;
+    Client* client;
+    Server* server;
     std::string mapName;
     bool wasSpacePressed, wasWPressed;
 

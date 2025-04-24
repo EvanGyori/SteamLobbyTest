@@ -1,6 +1,8 @@
 #pragma once
 
-#include "steam_api.h"
+#include <string>
+
+#include "steam/steam_api.h"
 
 class Client
 {
@@ -21,6 +23,8 @@ public:
     void handleMessage(SteamNetworkingMessage_t& message);
 
     std::string getName() const;
+
+    HSteamNetConnection getConnectionHandle();
 
 private:
     HSteamNetConnection connectionHandle;

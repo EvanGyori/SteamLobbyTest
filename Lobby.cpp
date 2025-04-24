@@ -47,9 +47,14 @@ bool Lobby::isInLobby() const
     return lobbyId.ConvertToUint64() != 0;
 }
 
+CSteamID Lobby::getHostId() const
+{
+    return SteamMatchmaking()->GetLobbyOwner(lobbyId);
+}
+
 bool Lobby::isHost() const
 {
-    return SteamMatchmaking()->GetLobbyOwner(lobbyId) == SteamUser()->GetSteamID();
+    return getHostId() == SteamUser()->GetSteamID();
 }
 
 CSteamID Lobby::getLobbyId() const
